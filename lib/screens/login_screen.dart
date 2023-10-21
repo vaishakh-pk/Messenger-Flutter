@@ -3,7 +3,8 @@ import 'package:messenger/components/my_button.dart';
 import 'package:messenger/components/my_text_feild.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final void Function()? onTap;
+  const LoginScreen({super.key, this.onTap});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -43,15 +44,18 @@ class _LoginScreenState extends State<LoginScreen> {
               MyButton(text: 'Sign In' ,onTap: signin,),
               // register
               const SizedBox(height: 50,),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Not a member ?'),
-                  SizedBox(width: 4,),
-                  Text('Register Now',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold
-                  ),)
+                  const Text('Not a member ?'),
+                  const SizedBox(width: 4,),
+                  GestureDetector(
+                    onTap: widget.onTap,
+                    child: const Text('Register Now',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),),
+                  )
                 ],
               )
 

@@ -4,7 +4,8 @@ import '../components/my_button.dart';
 import '../components/my_text_feild.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+  final void Function()? onTap;
+  const RegisterScreen({super.key, this.onTap});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -49,15 +50,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
               MyButton(text: 'Sign Up' ,onTap: signup,),
               // register
               const SizedBox(height: 50,),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Already a member ?'),
-                  SizedBox(width: 4,),
-                  Text('Sign In',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold
-                  ),)
+                  const Text('Already a member ?'),
+                  const SizedBox(width: 4,),
+                  GestureDetector(
+                    onTap: widget.onTap,
+                    child: const Text('Sign In',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),),
+                  )
                 ],
               )
 
