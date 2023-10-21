@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:messenger/components/my_button.dart';
-import 'package:messenger/components/my_text_feild.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../components/my_button.dart';
+import '../components/my_text_feild.dart';
+
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  void signin(){}
+  final confirmpasswordController = TextEditingController();
+
+  void signup(){}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Center(child: Icon(Icons.message, size: 100,color: Colors.grey[800],)),
               //welcomeback msg
               const SizedBox(height: 30),
-              const Text("Welcome back, you've been missed!",
+              const Text("Let's create an acoount for you!",
               style: TextStyle(
                 fontSize: 16, 
               ),),
@@ -38,17 +41,20 @@ class _LoginScreenState extends State<LoginScreen> {
               //password textfeild
               const SizedBox(height: 10),
               MyTextFeild(controller: passwordController, hintText: 'Password', obscureText: true),
+              //confirm password textfeild
+              const SizedBox(height: 10),
+              MyTextFeild(controller: confirmpasswordController, hintText: 'Confirm Password', obscureText: true),
               //Sign in button
               const SizedBox(height: 25,),
-              MyButton(text: 'Sign In' ,onTap: signin,),
+              MyButton(text: 'Sign Up' ,onTap: signup,),
               // register
               const SizedBox(height: 50,),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Not a member ?'),
+                  Text('Already a member ?'),
                   SizedBox(width: 4,),
-                  Text('Register Now',
+                  Text('Sign In',
                   style: TextStyle(
                     fontWeight: FontWeight.bold
                   ),)
